@@ -23,7 +23,7 @@ def search(word, name=".txt"):
     string_match = []
     for x in list:
         if name.lower() in x.lower():
-            file = open(x, "r")
+            file = open(x, "r", encoding="utf-8")
             filelist = file.readlines()
             count = 1
             for y in filelist:
@@ -31,7 +31,10 @@ def search(word, name=".txt"):
                     matched_string = x + ":Line " + str(count) + ":" + y
                     string_match.append(matched_string)
                 count = count + 1
-    print(string_match)
+    export = open("Exported_Strings.txt", "w", encoding="utf-8")
+    for z in string_match:
+        export.write(z)
+    print("Exported all matching strings to Exported_Strings.txt")
 
 """ Deletes all files with exact letters. """
 def remove(name):
